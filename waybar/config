@@ -1,0 +1,119 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "modules-left": [
+        "battery",
+	"cpu",
+	"memory",
+	"memory#swap",
+	"custom/gpu",
+	"backlight",
+	"custom/keyboard",
+	"custom/div",
+	"custom/music"
+    ],
+    "modules-center": [
+       "hyprland/workspaces"
+    ],
+    "modules-right":[
+        "hyprland/language",
+	"wireplumber",
+	"wireplumber#mic",
+	"tray",
+	"custom/div",
+        "clock"
+    ],
+
+    "cpu": {
+        "interval": 10,
+	"format": " {usage}%"
+    },
+    "memory": {
+        "interval": 10,
+	"format": " {percentage}%",
+	"tooltip-format": "RAM: {used:0.01f}G/{total:0.01f}G"
+    },
+    "memory#swap": {
+        "interval": 10,
+	"format": "󰾵 {swapPercentage}%",
+	"tooltip-format": "zRAM: {swapUsed:0.01f}G/{swapTotal:0.01f}G" 
+    },
+    "custom/gpu": {
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/stats_gpu1.sh",
+        "return-type": "json",
+        "interval": 10,
+        "tooltip": true 
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"]
+    },
+    "custom/keyboard": {
+        "exec": "brightnessctl -d 'rgb:kbd_backlight' -m | cut -d, -f4 | tr -d '()%'",
+	"format": "{icon}{text}%",
+	"format-icons": [" "] 
+    },
+    "custom/music": {
+        "format": "{icon}{text}",
+        "return-type": "json",
+        "format-icons": {
+            "Playing": " ",
+            "Paused": " "
+        },
+        "max-length":70,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click": "playerctl play-pause"
+    },
+    "battery": {
+        "bat": "BAT0",
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}{capacity}%",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "max-length": 25
+    },
+    "custom/div": {
+    	"format": " "
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "🇺🇸",
+        "format-uk": "🇺🇦",
+	"on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+    },
+    "wireplumber": {
+        "format": "{icon}{volume}%",
+        "format-muted": " ",
+	"scroll-step": 5,
+        "on-click": "pwvucontrol",
+	"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "format-icons": [" ", " ", " "],
+	"tooltip": false
+    },
+    "wireplumber#mic": {
+        "node-type": "Audio/Source",
+        "format": "󰍬 {volume}%",
+        "format-muted": "󰍭",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "scroll-step": 5,
+	"tooltip": false
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 2,
+        "icons": {
+            "blueman": "bluetooth"
+        }
+    },
+    "clock": {
+        "format": "{:%Y.%m.%d %H:%M}",
+        "tooltip-format": "{:%A, %d %B %Y %H:%M:%S}",
+	"locale": "uk_UA.UTF-8",
+	"interval": 30
+    }
+}

@@ -1,0 +1,58 @@
+* {
+     font-family: "JetBrainsMono Nerd Font", monospace;
+     font-size: 14px;
+     font-weight: normal;
+}
+
+window {
+     background: transparent;
+     color: white;
+}
+
+.modules-left {
+    padding-left: 10px;
+}
+
+.modules-right {
+    padding-right: 10px;
+}
+
+tooltip {
+  background: black;
+  border: 1px solid gray;
+}
+
+tooltip label {
+  color: white;
+}
+
+#cpu, #memory, #memory-swap, #battery, #custom-gpu, #backlight, #custom-keyboard {
+     padding-right: 5px;
+}
+
+#clock, #wireplumber, #wireplumber-mic, #tray {
+    padding-left: 5px;
+}
+
+#language {
+    font-family: "Noto Color Emoji 10";
+}
+
+#workspaces button {
+    border: 0;
+    border-radius: 0;
+    border-top: 2px solid transparent;
+}
+
+#workspaces button.active {
+    border-top-color: white;
+}
+
+#workspaces button.urgent {
+    border-top-color: red;
+}
+
+#workspaces button:hover {
+    border-top-color: #00ff00;
+}
+
