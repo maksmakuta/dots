@@ -2,13 +2,15 @@
 
 I use Hyprland + Waybar
 
-![screenshot](screenshot.jpg)
+![screenshot](screenshot.png)
 
-### Dependencies
+## Dependencies
 
  - hyprland
  - hyprpaper (for wallpapers)
  - waybar
+ - foot terminal
+ - darkman
  - dunst (or any other notification manager)
 
  For some scripts also needed:  
@@ -17,12 +19,7 @@ I use Hyprland + Waybar
  - brightnessctl (for manage display and keyboard brightness)
  - nvidia-smi (only if you have nvidia gpu and want to show it status in waybar)
 
-#### Fonts
-
- You can use any font in waybar, but i use JetbrainsMono Nerd Font + monospace  
- For keyboard layout names i use flags emoji with font Noto Color Emoji
-
-### Licence
+## Licence
 
  IDontCareLicense  
  (C) Maks Makuta  

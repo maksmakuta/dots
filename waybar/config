@@ -17,7 +17,9 @@
     ],
     "modules-right":[
         "hyprland/language",
-	"wireplumber",
+	"network",
+	"bluetooth",
+        "wireplumber",
 	"wireplumber#mic",
 	"tray",
 	"custom/div",
@@ -35,7 +37,7 @@
     },
     "memory#swap": {
         "interval": 10,
-	"format": "󰾵 {swapPercentage}%",
+	"format": "󰈮 {swapPercentage}%",
 	"tooltip-format": "zRAM: {swapUsed:0.01f}G/{swapTotal:0.01f}G" 
     },
     "custom/gpu": {
@@ -53,6 +55,7 @@
     "custom/keyboard": {
         "exec": "brightnessctl -d 'rgb:kbd_backlight' -m | cut -d, -f4 | tr -d '()%'",
 	"format": "{icon}{text}%",
+	"interval": 10,
 	"format-icons": [" "] 
     },
     "custom/music": {
@@ -86,6 +89,23 @@
         "format-uk": "🇺🇦",
 	"on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
+    "network": {
+        "format-wifi": "{icon} ",
+        "format-ethernet": "󰈀 ",
+	"format-linked": "󰛳 ",
+        "format-disconnected": "󰌙 ",
+	"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "tooltip": false,
+	"on-click": "foot -e nmtui"
+    },
+    "bluetooth": {
+        "format-off": "󰂲",
+        "format-on": "󰂯",
+        "format-connected": "󰂱 {num_connections}",
+        "format-disabled": "󰂲",
+        "tooltip": false,
+        "on-click": "blueman-manager"
+    },
     "wireplumber": {
         "format": "{icon}{volume}%",
         "format-muted": " ",
@@ -111,7 +131,7 @@
         }
     },
     "clock": {
-        "format": "{:%Y.%m.%d %H:%M}",
+        "format": "{:%H:%M %d.%m.%Y}",
         "tooltip-format": "{:%A, %d %B %Y %H:%M:%S}",
 	"locale": "uk_UA.UTF-8",
 	"interval": 30
